@@ -3,6 +3,8 @@ import Nav from './components/Nav';
 import Banner from './components/Banner';
 import './App.css';
 import Category from './components/Category';
+import Row from './components/Row';
+import { RowList } from './components/Row/Constant';
 
 const App = () => {
   return (
@@ -10,6 +12,11 @@ const App = () => {
       <Nav />
       <Banner />
       <Category />
+      {RowList.map((row) => (
+        <div key={row.key}>
+          <Row id={row.id} title={row.title} fetchUrl={row.fetchUrl} />
+        </div>
+      ))}
     </Container>
   );
 };
