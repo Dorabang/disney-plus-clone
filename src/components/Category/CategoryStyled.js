@@ -5,10 +5,10 @@ export const Container = styled.div`
   padding: 30px 0 26px;
   display: grid;
   gap: 25px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(1, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(5, 1fr);
   }
 `;
 
@@ -21,7 +21,7 @@ export const Wrap = styled.div`
   overflow: hidden;
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-  border: 3px solid rgba(249, 249, 249, 0.1);
+  border: 2px solid rgba(249, 249, 249, 0.1);
 
   img {
     inset: 0px;
