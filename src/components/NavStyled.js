@@ -6,13 +6,16 @@ export const NavWrapper = styled.nav`
   left: 0;
   right: 0;
   height: 70px;
-  background: ${(props) => (props.show === 'true' ? '#090b13' : 'transparent')};
+  background: ${(props) =>
+    props.show === 'true' ? 'rgba(9, 11, 19, 0.6)' : 'transparent'};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
+  transition: all 400ms ease-in-out;
+  backdrop-filter: ${(props) => props.show === 'true' && 'blur(10px)'};
 `;
 
 export const Logo = styled.a`
