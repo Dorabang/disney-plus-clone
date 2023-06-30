@@ -32,6 +32,12 @@ const Banner = () => {
   if (isClicked) {
     return (
       <>
+        <button
+          className='btn_cancel'
+          onClick={() => setIsClicked((prev) => !prev)}
+        >
+          X
+        </button>
         <Container>
           <HomeContainer>
             <Iframe
@@ -43,7 +49,6 @@ const Banner = () => {
             ></Iframe>
           </HomeContainer>
         </Container>
-        <button onClick={() => setIsClicked((prev) => !prev)}>X</button>
       </>
     );
   } else {
@@ -55,6 +60,7 @@ const Banner = () => {
           backgroundSize: 'cover',
         }}
       >
+        <div className='banner_bg'></div>
         <div className='banner_contents'>
           <h2 className='banner_title'>
             {movie.title || movie.name || movie.original_name}
