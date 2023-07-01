@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from '../../api/axios';
 import './Row.css';
 import MovieModal from '../MovieModal';

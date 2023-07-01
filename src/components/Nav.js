@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavWrapper, Logo, Login, Input } from './NavStyled';
+import { NavWrapper, Logo, Login, Form } from './NavStyled';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Nav = () => {
@@ -24,9 +24,9 @@ const Nav = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-    Navigate(`/search?q=${e.target.value}`);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Navigate(`/search?q=${searchValue}`);
   };
 
   return (
@@ -42,13 +42,15 @@ const Nav = () => {
       {pathname === '/' ? (
         <Login>Log-in</Login>
       ) : (
-        <Input
-          value={searchValue}
-          onChange={handleChange}
-          className='nav_input'
-          type='text'
-          placeholder='Search'
-        />
+        <Form onSubmit={handleSubmit}>
+          <input
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            type='text'
+            placeholder='Search'
+          />
+          <input type='submit' value='검색' />
+        </Form>
       )}
     </NavWrapper>
   );

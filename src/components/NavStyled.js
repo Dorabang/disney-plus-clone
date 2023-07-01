@@ -49,13 +49,64 @@ export const Login = styled.a`
   }
 `;
 
-export const Input = styled.input`
+export const Form = styled.form`
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.582);
-  border-radius: 5px;
-  color: #fff;
-  padding: 5px;
   border: none;
+  display: flex;
+  align-items: center;
+
+  input {
+    border: none;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    outline: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  input[type='text'] {
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    height: 18px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  input[type='submit'] {
+    background: rgb(255, 255, 255);
+    outline: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: #000;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: transparent;
+  }
+
+  input:focus:-moz-placeholder,
+  textarea:focus:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+  }
+
+  input:focus::-moz-placeholder,
+  textarea:focus::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: transparent;
+  }
+
+  input:focus:-ms-input-placeholder,
+  textarea:focus:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: transparent;
+  }
 `;
