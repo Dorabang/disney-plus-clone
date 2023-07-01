@@ -8,15 +8,18 @@ const Row = ({ id, title, fetchUrl }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [movieSelected, setMovieSelected] = useState({});
 
+  /* 
+  // 모달 제외 화면 클릭 시, close 기능 => custom Hooks로 처리
   const modalRef = useRef(null);
 
   const modalOutSideClick = (e) => {
-    console.log(modalRef.current);
-    console.log(e.target);
+    // console.log(modalRef.current);
+    // console.log(e.target);
     if (modalRef.current === e.target) {
       setModalOpen(false);
     }
   };
+ */
 
   const handleClick = (movie) => {
     setModalOpen(true);
@@ -26,7 +29,7 @@ const Row = ({ id, title, fetchUrl }) => {
   const fetchMovieData = useCallback(async () => {
     const response = await axios.get(fetchUrl);
     setMovies(response.data.results);
-    console.log(response.data.results);
+    // console.log(response.data.results);
     return response;
   }, [fetchUrl]);
 
@@ -69,12 +72,7 @@ const Row = ({ id, title, fetchUrl }) => {
         </div>
       </div>
       {modalOpen && (
-        <MovieModal
-          {...movieSelected}
-          modalRef={modalRef}
-          modalOutSideClick={modalOutSideClick}
-          setModalOpen={setModalOpen}
-        />
+        <MovieModal {...movieSelected} setModalOpen={setModalOpen} />
       )}
     </div>
   );
