@@ -1,43 +1,34 @@
-import { styled } from 'styled-components';
-import Nav from './components/Nav';
-import Banner from './components/Banner';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Category from './components/Category';
-import Row from './components/Row';
-import { RowList } from './components/Row/Constant';
+import Nav from './components/Nav';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import DetailPage from './pages/DetailPage';
+import SearchPage from './pages/SearchPage';
 
-const App = () => {
+const Layout = () => {
   return (
-    <Container>
+    <div>
       <Nav />
-      <Banner />
-      <Category />
-      {RowList.map((row) => (
-        <div key={row.key}>
-          <Row id={row.id} title={row.title} fetchUrl={row.fetchUrl} />
-        </div>
-      ))}
-    </Container>
+
+      <Outlet />
+    </div>
   );
 };
 
-const Container = styled.main`
-  position: relative;
-  min-height: calc(100vh - 250px);
-  overflow-x: hidden;
-  display: block;
-  top: 72px;
-  padding: 0 calc(3.5vw + 5px);
-
-  &:after {
-    background: url('images/home-background.png') center center no-repeat fixed;
-    background-size: cover;
-    content: '';
-    position: absolute;
-    inset: 0px;
-    opacity: 1;
-    z-index: -1;
-  }
-`;
+const App = () => {
+  return (
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<LoginPage />} />
+          <Route path='main' element={<MainPage />} />
+          <Route path=':movieId' element={<DetailPage />} />
+          <Route path='search' element={<SearchPage />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
