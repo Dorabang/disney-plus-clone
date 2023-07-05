@@ -57,10 +57,14 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
 
+  @media (max-width: 768px) {
+    position: static;
+    transform: translateX(0);
+  }
+
   input {
     border: none;
     border-radius: 5px;
-    background: rgb(255, 255, 255);
     outline: none;
     padding: 8px 12px;
     border-radius: 5px;
@@ -68,7 +72,7 @@ export const Form = styled.form`
   }
 
   input[type='text'] {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
     outline: none;
     height: 18px;
     padding: 5px 12px;
@@ -77,13 +81,23 @@ export const Form = styled.form`
   }
 
   input[type='submit'] {
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.05);
     outline: none;
     padding: 5px 12px;
     border-radius: 5px;
-    color: #000;
+    color: #999;
     margin-left: 8px;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  input[type='submit']:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
   }
 
   input:focus::-webkit-input-placeholder,
@@ -109,4 +123,57 @@ export const Form = styled.form`
     /* Internet Explorer 10+ */
     color: transparent;
   }
+`;
+
+export const DropDown = styled.div`
+  position: absolute;
+  top: 64px;
+  right: 0px;
+  background: rgb(19, 19, 19);
+  border: 1px solid rgba(151, 151, 151, 0.34);
+  border-radius: 5px;
+  box-shadow: 0px 0px 18px 0px rgb(0 0 0 /50%);
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.2s ease 0s;
+  width: 100px;
+  opacity: 0;
+
+  &:hover {
+    background: #f9f9f9;
+    color: #000;
+  }
+
+  @media (max-width: 768px) {
+    top: 40px;
+    right: 0px;
+  }
+`;
+
+export const SignOut = styled.div`
+  position: relative;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    ${DropDown} {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 28px;
+    width: 28px;
+  }
+`;
+
+export const UserImg = styled.img`
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
 `;
